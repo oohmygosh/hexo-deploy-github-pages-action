@@ -56,7 +56,8 @@ echo ">>> init CNAME"
 
 echo "blog.vipicu.com" > CNAME
 
-echo ">>> Config git ..."
+
+echo "Copy ${PUBLISH_REPOSITORY} img folder"
 
 rm -rf img
 mkdir temp
@@ -73,6 +74,10 @@ mv ./img ../
 
 cd ..
 rm -rf temp
+
+echo "Copy completed"
+
+echo ">>> Config git ..."
 
 git init
 git config user.name "${GITHUB_ACTOR}"
