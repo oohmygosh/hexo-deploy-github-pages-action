@@ -58,20 +58,26 @@ echo "blog.vipicu.com" > CNAME
 
 echo ">>> Config git ..."
 
+rm -rf img
+mkdir temp
+cd temp
 # Configures Git.
 git init
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git remote add origin "${REPOSITORY_PATH}"
-
-# pull img
 git config core.sparsecheckout true
 echo "/img" >> .git/info/sparse-checkout 
-rm -rf ./img
 git pull origin $TARGET_BRANCH
-git config core.sparsecheckout false
-git checkout -b temp
-git branch -D $TARGET_BRANCH
+mv ./img ../
+
+cd ..
+rm -rf temp
+
+git init
+git config user.name "${GITHUB_ACTOR}"
+git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+git remote add origin "${REPOSITORY_PATH}"
 
 git checkout --orphan $TARGET_BRANCH
 
