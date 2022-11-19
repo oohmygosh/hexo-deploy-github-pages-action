@@ -64,6 +64,14 @@ git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git remote add origin "${REPOSITORY_PATH}"
 
+# pull img
+git config core.sparsecheckout true
+echo "/img" >> .git/info/sparse-checkout 
+git pull origin $TARGET_BRANCH
+git config core.sparsecheckout false
+git checkout -b temp
+git branch -D $TARGET_BRANCH
+
 git checkout --orphan $TARGET_BRANCH
 
 git add .
