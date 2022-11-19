@@ -67,6 +67,7 @@ git remote add origin "${REPOSITORY_PATH}"
 # pull img
 git config core.sparsecheckout true
 echo "/img" >> .git/info/sparse-checkout 
+rm -f ./img
 git pull origin $TARGET_BRANCH
 git config core.sparsecheckout false
 git checkout -b temp
