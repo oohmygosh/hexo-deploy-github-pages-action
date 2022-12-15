@@ -69,8 +69,9 @@ ls
 echo "<<<<<<<<<<<<<<"
 # Configures Git.
 git init
-git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+git config user.name "${GITHUB_ACTOR}"
 git remote add origin "${REPOSITORY_PATH}"
 git config core.sparsecheckout true
 echo "/img" >> .git/info/sparse-checkout 
