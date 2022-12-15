@@ -78,9 +78,10 @@ echo "Copy completed"
 echo ">>> Config git ..."
 
 git init
-git config --global user.email "com.vipicu@gmail.com"
 
-git config --global user.name "oohmygosh"
+git config user.email "com.vipicu@gmail.com"
+
+git config user.name "oohmygosh"
 
 git remote add origin "${REPOSITORY_PATH}"
 
