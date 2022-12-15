@@ -37,6 +37,7 @@ echo ">>>>> Start deploy to ${TARGET_REPOSITORY} <<<<<"
 echo ">>> Install Git ..."
 apt-get update && \
 apt-get install -y git && \
+
 # Directs the action to the the Github workspace.
 cd "${GITHUB_WORKSPACE}"
 
@@ -51,48 +52,12 @@ npx hexo generate
 
 cd $TARGET_PUBLISH_DIR
 
-echo ">>> init CNAME"
+echo ">>> Config git ..."
 
-echo "blog.vipicu.com" > CNAME
-
-
-echo "Copy ${PUBLISH_REPOSITORY} img folder"
-
-rm -rf img
-mkdir temp
-pwd
-PUBLIC_PATH=`pwd`
-cd temp
-echo ">>>>>>>>>>>>>>"
-pwd
-ls
-echo "<<<<<<<<<<<<<<"
 # Configures Git.
 git init
-git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
 git config user.name "${GITHUB_ACTOR}"
-git remote add origin "${REPOSITORY_PATH}"
-git config core.sparsecheckout true
-echo "/img" >> .git/info/sparse-checkout 
-git pull origin $TARGET_BRANCH
-mv ./img ../
-
-cd ..
-rm -rf temp
-echo ">>>>>>>>>>>>>>"
-pwd
-ls
-echo "<<<<<<<<<<<<<<"
-
-echo "Copy completed"
-
-echo ">>> Config git ..."
-pwd
-ls
-git init
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-git config user.name "${GITHUB_ACTOR}"
 git remote add origin "${REPOSITORY_PATH}"
 
 git checkout --orphan $TARGET_BRANCH
