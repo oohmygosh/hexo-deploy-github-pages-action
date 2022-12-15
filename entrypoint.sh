@@ -61,6 +61,8 @@ echo "Copy ${PUBLISH_REPOSITORY} img folder"
 
 rm -rf img
 mkdir temp
+pwd
+PUBLIC_PATH=`pwd`
 cd temp
 # Configures Git.
 git init
@@ -78,6 +80,7 @@ rm -rf temp
 echo "Copy completed"
 
 echo ">>> Config git ..."
+cd $PUBLIC_PATH
 pwd
 git init
 git config user.name "${GITHUB_ACTOR}"
