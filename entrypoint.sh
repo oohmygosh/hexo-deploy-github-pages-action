@@ -78,11 +78,10 @@ echo "Copy completed"
 echo ">>> Config git ..."
 
 git init
-echo "111"
+git config user.email "com.vipicu@gamil.com"
+git config user.name "oohmygosh"
 git remote add origin "${REPOSITORY_PATH}"
-echo "222"
 git checkout --orphan $TARGET_BRANCH
-echo "333"
 git add .
 
 echo '>>> Start Commit ...'
