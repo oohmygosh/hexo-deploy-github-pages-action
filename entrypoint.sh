@@ -37,9 +37,6 @@ echo ">>>>> Start deploy to ${TARGET_REPOSITORY} <<<<<"
 echo ">>> Install Git ..."
 apt-get update && \
 apt-get install -y git && \
-pwd
-ls
-cd ../../
 # Directs the action to the the Github workspace.
 cd "${GITHUB_WORKSPACE}"
 
@@ -66,6 +63,10 @@ mkdir temp
 pwd
 PUBLIC_PATH=`pwd`
 cd temp
+echo ">>>>>>>>>>>>>>"
+pwd
+ls
+echo "<<<<<<<<<<<<<<"
 # Configures Git.
 git init
 git config user.name "${GITHUB_ACTOR}"
@@ -78,12 +79,16 @@ mv ./img ../
 
 cd ..
 rm -rf temp
+echo ">>>>>>>>>>>>>>"
+pwd
+ls
+echo "<<<<<<<<<<<<<<"
 
 echo "Copy completed"
 
 echo ">>> Config git ..."
-cd $PUBLIC_PATH
 pwd
+ls
 git init
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
