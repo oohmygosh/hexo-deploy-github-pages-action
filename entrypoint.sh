@@ -52,12 +52,41 @@ npx hexo generate
 
 cd $TARGET_PUBLISH_DIR
 
-echo ">>> Config git ..."
+echo ">>> init CNAME"
 
+echo "blog.vipicu.com" > CNAME
+
+
+echo "Copy ${PUBLISH_REPOSITORY} img folder"
+
+rm -rf img
+mkdir temp
+cd temp
 # Configures Git.
 git init
-git config user.name "${GITHUB_ACTOR}"
-git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+git config --global user.email "com.vipicu@gmail.com"
+
+git config --global user.name "oohmygosh"
+
+git remote add origin "${REPOSITORY_PATH}"
+git config core.sparsecheckout true
+echo "/img" >> .git/info/sparse-checkout 
+git pull origin $TARGET_BRANCH
+mv ./img ../
+
+cd ..
+rm -rf temp
+
+echo "Copy completed"
+
+echo ">>> Config git ..."
+
+git init
+git config --global user.email "com.vipicu@gmail.com"
+
+git config --global user.name "oohmygosh"
+
 git remote add origin "${REPOSITORY_PATH}"
 
 git checkout --orphan $TARGET_BRANCH
