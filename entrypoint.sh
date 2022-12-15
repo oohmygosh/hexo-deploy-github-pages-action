@@ -91,8 +91,8 @@ echo ">>> Config git ..."
 pwd
 ls
 git init
-git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+git config user.name "${GITHUB_ACTOR}"
 git remote add origin "${REPOSITORY_PATH}"
 
 git checkout --orphan $TARGET_BRANCH
