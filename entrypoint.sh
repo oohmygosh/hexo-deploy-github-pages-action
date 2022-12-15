@@ -64,11 +64,6 @@ mkdir temp
 cd temp
 # Configures Git.
 git init
-
-git config --global user.email "com.vipicu@gmail.com"
-
-git config --global user.name "oohmygosh"
-
 git remote add origin "${REPOSITORY_PATH}"
 git config core.sparsecheckout true
 echo "/img" >> .git/info/sparse-checkout 
